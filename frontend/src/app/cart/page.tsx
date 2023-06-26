@@ -14,7 +14,7 @@ import { CartSummary } from "@/widgets/CartSummary/CartSummary";
 
 const Cart = () => {
 	const cart = useSelector((state: RootState) => selectCartModule(state));
-	const { data, isFetching } = useGetMoviesQuery();
+	const { data } = useGetMoviesQuery();
 	return (
 		<Container className={styles.container}>
 			<div className={styles.list}>
@@ -23,7 +23,7 @@ const Cart = () => {
 						.filter((movie) => !!cart[movie.id])
 						.map((movie) => {
 							return (
-								<MovieCard key={movie.id} movie={movie}>
+								<MovieCard key={movie.id}>
 									<MovieCard.Image
 										title={movie.title}
 										posterUrl={movie.posterUrl}

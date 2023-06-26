@@ -2,24 +2,18 @@
 import styles from "./page.module.css";
 import Container from "@/shared/ui/Container/Container";
 import { Card } from "@/shared/ui/Card/Card";
-import {
-	useGetCinemaMoviesQuery,
-	useGetMoviesQuery,
-} from "@/entities/Movie/api/movieApi";
+import { useGetCinemaMoviesQuery } from "@/entities/Movie/api/movieApi";
 import MovieCard from "@/widgets/MovieCard/ui/MovieCard";
-import React, { useState } from "react";
+import React from "react";
 import EditCart from "@/features/Cart/EditCart/ui/EditCart";
-import DeleteFromCart from "@/features/Cart/DeleteFromCart/ui/DeleteFromCart";
 import Filter from "@/widgets/Filter/ui/Filter";
 import { useSelector } from "react-redux";
 import {
 	selectFilterCinema,
 	selectFilterGenre,
-	selectFilterModule,
 	selectFilterText,
 } from "@/features/Filter/model/selector";
 import { RootState } from "@/shared/store/store";
-import { Movie } from "@/entities/Movie/api/types";
 import CardSkeleton from "@/shared/ui/CardSkeleton/CardSkeleton";
 
 export default function Home() {
@@ -62,7 +56,7 @@ export default function Home() {
 							);
 						})
 						.map((movie) => (
-							<MovieCard key={movie.id} movie={movie}>
+							<MovieCard key={movie.id}>
 								<MovieCard.Image
 									title={movie.title}
 									posterUrl={movie.posterUrl}
