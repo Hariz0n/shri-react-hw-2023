@@ -15,6 +15,8 @@ import {
 } from "@/features/Filter/model/selector";
 import { RootState } from "@/shared/store/store";
 import CardSkeleton from "@/shared/ui/CardSkeleton/CardSkeleton";
+import { Movie } from "@/entities/Movie/api/types";
+import { Info } from "@/widgets/Info/ui/Info";
 
 export default function Home() {
 	const filtersText = useSelector((state: RootState) =>
@@ -27,6 +29,38 @@ export default function Home() {
 		selectFilterGenre(state)
 	);
 	const { data, isFetching } = useGetCinemaMoviesQuery(filtersCinema);
+
+	const MList = () => {
+		let filteredMovies: Movie[] | undefined;
+		if (data) {
+			filteredMovies = data.filter((movie) => {
+				return (
+					movie.genre === (filtersGenre ?? movie.genre) &&
+					movie.title.toLowerCase().includes(filtersText.toLowerCase())
+				);
+			});
+		}
+		if (!filteredMovies) return null;
+		if (filteredMovies.length === 0) {
+			return (
+				<Info>
+					<h2>Фильмы не найдены</h2>
+					<p>Измените параметры фильтрации</p>
+				</Info>
+			);
+		}
+		return filteredMovies.map((movie) => (
+			<MovieCard key={movie.id}>
+				<MovieCard.Image title={movie.title} posterUrl={movie.posterUrl} />
+				<MovieCard.Content
+					id={movie.id}
+					title={movie.title}
+					genre={movie.genre}
+				/>
+				<EditCart movieId={movie.id} />
+			</MovieCard>
+		));
+	};
 
 	return (
 		<Container className={styles.main}>
@@ -46,29 +80,7 @@ export default function Home() {
 						<h1>Не удалось загрузить данные</h1>
 					</Card>
 				)}
-				{!isFetching &&
-					data &&
-					data
-						.filter((movie) => {
-							return (
-								movie.genre === (filtersGenre ?? movie.genre) &&
-								movie.title.toLowerCase().includes(filtersText.toLowerCase())
-							);
-						})
-						.map((movie) => (
-							<MovieCard key={movie.id}>
-								<MovieCard.Image
-									title={movie.title}
-									posterUrl={movie.posterUrl}
-								/>
-								<MovieCard.Content
-									id={movie.id}
-									title={movie.title}
-									genre={movie.genre}
-								/>
-								<EditCart movieId={movie.id} />
-							</MovieCard>
-						))}
+				{!isFetching && data && <MList></MList>}
 			</ul>
 		</Container>
 	);

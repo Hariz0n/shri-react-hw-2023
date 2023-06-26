@@ -9,8 +9,8 @@ import MovieCard from "@/widgets/MovieCard/ui/MovieCard";
 import EditCart from "@/features/Cart/EditCart/ui/EditCart";
 import DeleteFromCart from "@/features/Cart/DeleteFromCart/ui/DeleteFromCart";
 import styles from "./page.module.css";
-import { Card } from "@/shared/ui/Card/Card";
 import { CartSummary } from "@/widgets/CartSummary/CartSummary";
+import { Info } from "@/widgets/Info/ui/Info";
 
 const Cart = () => {
 	const cart = useSelector((state: RootState) => selectCartModule(state));
@@ -38,7 +38,11 @@ const Cart = () => {
 								</MovieCard>
 							);
 						})}
-				{Object.values(cart).length === 0 && <Card>Корзина пуста</Card>}
+				{Object.values(cart).length === 0 && (
+					<Info>
+						<h2>Корзина пуста</h2>
+					</Info>
+				)}
 			</div>
 			<CartSummary className={styles.summary} />
 		</Container>
