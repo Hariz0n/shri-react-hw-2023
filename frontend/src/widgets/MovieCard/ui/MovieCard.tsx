@@ -6,6 +6,7 @@ import { Roboto } from "next/font/google";
 import classNames from "classnames";
 import Link from "next/link";
 import { GENRE } from "@/shared/translations/Genre";
+import Image from "next/image";
 
 interface IProps {
 	children: React.ReactNode;
@@ -25,7 +26,15 @@ MovieCard.Image = function MovieImage({
 	posterUrl,
 	title,
 }: Pick<Movie, "title" | "posterUrl">) {
-	return <img src={posterUrl} alt={title} className={styles.image} />;
+	return (
+		<Image
+			src={posterUrl}
+			alt={title}
+			className={styles.image}
+			width={100}
+			height={120}
+		/>
+	);
 };
 
 MovieCard.Content = function MovieContent({
