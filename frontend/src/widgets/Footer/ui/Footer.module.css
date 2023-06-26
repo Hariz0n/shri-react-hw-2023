@@ -1,0 +1,16 @@
+.footer {
+    background-color: #333;
+    padding: 31px 0;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+}

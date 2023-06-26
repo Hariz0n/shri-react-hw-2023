@@ -1,0 +1,20 @@
+*,
+*:after,
+*:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #F5F5F5;
+}
+
+:root {
+    --text-primary: #1B1F23;
+    --text-tertiary: #999FA6;
+    --orange: #F50;
+    --orange-disabled: #FFA375;
+    --border-default: #E1E3E6;
+    --background-primary: #FFF;
+}

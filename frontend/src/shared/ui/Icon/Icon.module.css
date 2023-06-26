@@ -1,0 +1,14 @@
+.small {
+    height: 12px;
+    width: 12px;
+}
+
+.normal {
+    height: 20px;
+    width: 20px;
+}
+
+.large {
+    height: 32px;
+    width: 32px;
+}

@@ -1,0 +1,16 @@
+.iconButton {
+    padding: 4px;
+    border-radius: 4px;
+    border: none;
+    line-height: 0;
+    aspect-ratio: 1;
+    height: auto;
+    background-color: var(--orange);
+    color: white;
+    cursor: pointer;
+}
+
+.iconButton:disabled {
+    background-color: var(--orange-disabled);
+    cursor: not-allowed;
+}

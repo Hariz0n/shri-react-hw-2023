@@ -1,0 +1,11 @@
+.text {
+    color: var(--text-primary);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}

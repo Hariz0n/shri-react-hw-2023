@@ -1,0 +1,33 @@
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: stretch;
+}
+
+.title {
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-primary);
+}
+
+.input {
+    color: var(--text-tertiary);
+    font-size: 14px;
+    line-height: 20px;
+    padding: 9px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-default);
+    background: var(--background-primary);
+    outline: none;
+}
+
+.input:active {
+    outline: none;
+    border-color: var(--orange);
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--orange);
+}
