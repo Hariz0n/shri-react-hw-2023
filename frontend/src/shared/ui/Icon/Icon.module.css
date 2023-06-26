@@ -1,14 +1,17 @@
 .small {
     height: 12px;
     width: 12px;
+    flex-shrink: 0;
 }
 
 .normal {
     height: 20px;
     width: 20px;
+    flex-shrink: 0;
 }
 
 .large {
     height: 32px;
     width: 32px;
+    flex-shrink: 0;
 }
